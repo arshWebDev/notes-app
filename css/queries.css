@@ -1,0 +1,183 @@
+/* ----------------------- */
+/* components */
+/* ----------------------- */
+
+/* profile-chooser */
+
+@media (min-width: 30em) {
+  .profile-chooser {
+    width: 440px;
+  }
+}
+
+/* nav */
+
+@media (min-width: 45em) {
+  nav label a {
+    font-size: 1.6rem;
+  }
+
+  .search-bar {
+    padding: 5px 20px;
+    background: var(--search-bar-background);
+    border-radius: 8px;
+    margin-inline: 40px 0;
+  }
+
+  .search-bar input {
+    width: 100%;
+    position: static;
+    transform: translateX(0);
+    background: none;
+    border: 0;
+    margin-left: 10px;
+    outline: none;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .theme-toggle {
+    margin-inline: auto 0;
+  }
+
+  .theme-toggle label {
+    font-size: 1.8rem;
+  }
+
+  .profile {
+    margin-inline: auto 30px;
+  }
+
+  .profile img {
+    width: 35px;
+  }
+
+  .profile p {
+    display: block;
+    margin-right: 15px;
+  }
+}
+
+@media (min-width: 55em) {
+  nav {
+    padding: 20px 40px;
+  }
+  .search-bar {
+    margin-left: 60px;
+  }
+}
+
+@media (min-width: 78em) {
+  nav {
+    position: static;
+  }
+
+  .sidebar-menu-btn {
+    display: none;
+  }
+
+  .search-bar {
+    width: 500px;
+    margin-left: 140px;
+  }
+
+  .profile {
+    margin-inline: auto 30px;
+  }
+}
+
+/* -- main -- */
+
+/* sidebar */
+
+@media (min-width: 78em) {
+  .side-bar {
+    width: 300px;
+    transform: translate(0);
+    position: static;
+    padding: 0 40px;
+    z-index: 1;
+    box-shadow: none;
+  }
+
+  .close-btn {
+    display: none;
+  }
+
+  .sidebar-tags ul {
+    margin-top: 15px;
+  }
+
+  .sidebar-tags li:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+/* delete btn */
+
+@media (min-width: 45em) {
+  .delete-note-container {
+    padding-inline: 40px;
+  }
+}
+
+/* notes */
+
+@media (min-width: 45em) {
+  .notes-container {
+    justify-content: start;
+    height: 70vh;
+    padding: 1rem;
+  }
+
+  .note {
+    width: 360px;
+  }
+}
+
+@media (min-width: 55em) {
+  .notes-container {
+    padding: 1rem 40px;
+  }
+}
+
+@media (min-width: 78em) {
+  #notes-heading {
+    margin: 0 0 20px;
+  }
+
+  .notes-container {
+    padding: 1rem;
+  }
+
+  .select-btn {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* note edit, note create section */
+
+@media (min-width: 45em) {
+  .note.note--edit,
+  .note-create-container {
+    width: 500px;
+  }
+
+  .note-content-input {
+    max-height: 400px;
+  }
+}
+
+/* ----------------------- */
+/* attribution */
+/* ----------------------- */
+
+@media (min-width: 40em) {
+  .attribution-container {
+    left: 40px;
+    bottom: 40px;
+    transform: translateX(0);
+    width: auto;
+  }
+}

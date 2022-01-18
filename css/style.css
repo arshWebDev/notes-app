@@ -1,0 +1,933 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap");
+
+/* ----------------------- */
+/* custom properties */
+/* ----------------------- */
+
+[data-theme="light"] {
+  /* text   */
+  --primary-text: hsl(0, 0%, 5%);
+  --secondary-text: hsl(0, 0%, 20%);
+  --tertiary-text: hsl(0, 0%, 40%);
+
+  /* background */
+  --background: hsl(0, 0%, 96%);
+  --note-bg: hsl(0, 0%, 90%);
+
+  /* call to action */
+  --call-to-action: hsl(33, 100%, 67%);
+
+  /* selection */
+  --selection-text: hsl(220, 4%, 95%);
+  --selection-background: hsl(220, 80%, 60%);
+
+  /* others */
+  --search-bar-background: hsl(0, 0%, 81%);
+  --anchor-tag: hsl(240, 100%, 68%);
+  --label-background: rgba(0, 0, 0, 0.2);
+  --scrollbar-color: rgba(0, 0, 0, 0.6);
+  --attribution-background: hsl(0, 0%, 81%);
+  --attribution-anchor-tag: hsl(240, 100%, 43%);
+  --theme-btn-hover: hsl(0, 0%, 75%);
+}
+
+[data-theme="dark"] {
+  /* text */
+  --primary-text: hsl(220, 4%, 95%);
+  --secondary-text: hsl(220, 4%, 90%);
+  --tertiary-text: hsl(220, 6%, 85%);
+
+  /* background */
+  --background: hsl(240, 11%, 15%);
+  --note-bg: hsl(240, 11%, 15%);
+
+  /* call to action */
+  --call-to-action: hsl(343, 79%, 61%);
+
+  /* selection */
+  --selection-text: hsl(0, 0%, 5%);
+  --selection-background: hsl(33, 100%, 67%);
+
+  /* others */
+  --search-bar-background: hsl(240, 4%, 20%);
+  --anchor-tag: hsl(240, 100%, 68%);
+  --label-background: rgba(220, 220, 220, 0.2);
+  --scrollbar-color: rgba(255, 255, 255, 0.25);
+  --attribution-background: hsl(240, 11%, 15%);
+  --attribution-anchor-tag: hsl(240, 100%, 85%);
+  --theme-btn-hover: hsl(0, 0%, 23%);
+}
+
+::selection {
+  color: var(--selection-text);
+  background-color: var(--selection-background);
+}
+
+/* ----------------------- */
+/* reset */
+/* ----------------------- */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p,
+a,
+span {
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: var(--black-to-white);
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  font-weight: 700;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  outline: 0;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+/* ----------------------- */
+/* body */
+/* ----------------------- */
+
+body {
+  line-height: 1.5;
+  color: var(--primary-text);
+  min-height: 100vh;
+  font-family: "Nunito", sans-serif;
+  overflow: hidden;
+  background-color: var(--background);
+}
+
+/* ----------------------- */
+/* utility classes */
+/* ----------------------- */
+
+/* display */
+
+.display--none {
+  display: none !important;
+}
+
+/* screen */
+
+.screen--hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.screen--hidden-2 {
+  transform: scale(0);
+  height: 0;
+  width: 0 !important;
+}
+
+/* translate */
+
+.translate-0 {
+  transform: translate(0) !important;
+}
+.translate-50-50 {
+  transform: translate(-50%, -50%);
+}
+
+/* position */
+
+.position--absolute {
+  position: absolute !important;
+}
+
+/* ----------------------- */
+/* components */
+/* ----------------------- */
+
+/* profile-chooser */
+
+.profile-chooser {
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  background-color: var(--background);
+  border-radius: 20px;
+  padding: 40px;
+  transition: 0.3s;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.4);
+}
+
+.name label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.name input[type="text"] {
+  width: 100%;
+  color: var(--primary-text);
+  padding: 5px;
+  background: var(--background);
+  border: 0;
+  border-bottom: 1px solid var(--primary-text);
+}
+
+.profile-pic {
+  margin-block: 20px;
+}
+
+.profile-pic span {
+  font-weight: 700;
+}
+
+.profile-pic div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.profile-pic div img {
+  width: 50px;
+  margin: 0 10px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.selected {
+  outline: 4px solid var(--primary-text);
+}
+
+.ok-btn {
+  padding: 5px 60px;
+  background-color: var(--call-to-action);
+  border: 1px solid var(--primary-text);
+  border-radius: 5px;
+}
+
+.ok-btn:hover,
+.ok-btn:focus {
+  background-color: var(--call-to-action);
+}
+
+/* nav */
+
+nav {
+  position: fixed;
+  z-index: 600;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-content: center;
+  padding: 20px;
+  background: var(--background);
+}
+
+.sidebar-menu-btn {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+nav label {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+nav label a {
+  font-weight: 700;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-inline: auto 0;
+}
+
+.search-bar input {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  color: var(--primary-text);
+  padding: 13px 0 10px 20px;
+  background: var(--search-bar-background);
+  border-radius: 8px;
+  border: 1px solid #dddddd;
+  transition: all 0.3s background 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.search-bar:hover input {
+  opacity: 1;
+  visibility: visible;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  margin-inline: 25px 20px;
+}
+
+.profile img {
+  width: 30px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profile img:focus,
+.profile img:hover {
+  outline: 4px solid var(--primary-text);
+}
+
+.profile p {
+  display: none;
+  cursor: default;
+}
+
+.theme-choose {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 0;
+}
+
+.theme-btn {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.theme {
+  position: absolute;
+  z-index: 100;
+  top: 65px;
+  left: -90px;
+  background: var(--note-bg);
+  border-radius: 5px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.theme button {
+  width: 100%;
+  padding: 8px 40px;
+  color: var(--primary-text);
+}
+
+.theme button:hover {
+  background: var(--theme-btn-hover);
+}
+
+/* -- main -- */
+
+main {
+  display: flex;
+}
+
+/* side bar */
+
+.side-bar {
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100%;
+  padding: 20px 20px;
+  background-color: var(--background);
+  transform: translate(-100%);
+  transition: all 0.7s background 0.3s;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.close-btn {
+  width: max-content;
+  font-size: 1.2rem;
+}
+
+.side-bar div:nth-child(2) {
+  margin: 20px 0 15px;
+}
+
+.side-bar div:nth-child(2) p {
+  position: relative;
+  cursor: pointer;
+}
+
+.sidebar-tags p {
+  color: var(--tertiary-text);
+  cursor: default;
+}
+
+.sidebar-tags ul {
+  padding-left: 15px;
+  list-style: none;
+  margin-top: 10px;
+}
+
+.sidebar-tags li {
+  padding: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.sidebar-tags li > span {
+  font-weight: 700;
+}
+
+.active-filter {
+  font-weight: 700 !important;
+}
+
+.side-bar div:nth-child(2) p > span {
+  font-weight: 700;
+}
+
+.sidebar-tags li.active-filter::before,
+.side-bar div:nth-child(2) p.active-filter::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -55px;
+  width: 3px;
+  height: 100%;
+  background-color: var(--primary-text);
+}
+
+.side-bar div:nth-child(2) p.active-filter::before {
+  left: -40px;
+}
+
+.sidebar-tags li:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.sidebar-tags li i,
+.side-bar div:nth-child(2) p i {
+  width: 20px;
+  margin-right: 10px;
+}
+
+/* delete btn */
+
+.delete-note-container {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  font-size: 1.5rem;
+  padding-inline: 20px;
+  background: var(--background);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .delete-note-container {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.cancel-btn {
+  border-radius: 50%;
+  transition: 0.3s;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  margin-left: auto;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* notes */
+
+.notes-area {
+  width: 100%;
+}
+
+#notes-heading {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+  margin: 80px 0 10px 17px;
+}
+
+.notes-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  height: 80vh;
+  padding: 1rem 1rem 2.5rem;
+  overflow-y: auto;
+}
+
+.notes-container::-webkit-scrollbar {
+  width: 0;
+}
+
+@supports (scrollbar-width: none) {
+  .notes-container {
+    scrollbar-width: none;
+  }
+}
+
+.empty-note-statement {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+.empty-note-statement span {
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.note {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 20px;
+  background: var(--note-bg);
+  border-radius: 10px;
+  transition: 0.4s;
+  box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.note-title {
+  height: 30px;
+  word-wrap: break-word;
+  font-weight: 700;
+  font-size: 1.3rem;
+  outline: none;
+  overflow: hidden;
+  cursor: default;
+}
+
+.note-content {
+  flex: 1;
+  max-height: 100px;
+  color: var(--secondary-text);
+  word-wrap: break-word;
+  margin-block: 10px 15px;
+  outline: none;
+  overflow: hidden;
+  cursor: default;
+}
+
+.note .note-label i {
+  display: none;
+}
+
+.note-footer {
+  color: var(--tertiary-text);
+  margin-block: 0;
+  cursor: default;
+}
+
+.note-edit--action-btn {
+  display: none;
+}
+
+.select-btn {
+  position: absolute;
+  top: -13px;
+  left: -8px;
+  font-size: 1.4rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.selected-note .select-btn {
+  visibility: visible;
+  opacity: 1;
+}
+
+.note:hover .select-btn {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* note edit */
+
+.note.note--edit {
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: auto;
+  padding-bottom: 15px;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.4);
+}
+
+.note-title,
+.note-content,
+.note-input {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  position: relative;
+}
+
+.note.note--edit .note-title,
+.note-title-input {
+  height: auto;
+  min-height: 20px;
+  max-height: 60px;
+  word-wrap: break-word;
+  overflow: auto;
+  cursor: text;
+}
+
+.note .note-title *,
+.note-title-input * {
+  font-weight: 700 !important;
+  font-size: 1.3rem !important;
+  color: var(--primary-text) !important;
+}
+
+.note .note-title *,
+.note-title-input *,
+.note .note-content *,
+.note-content-input * {
+  width: max-content;
+  background: transparent !important;
+}
+
+.note.note--edit .note-content,
+.note-content-input {
+  min-height: 300px;
+  max-height: 350px;
+  overflow-y: auto;
+  word-wrap: break-word;
+  cursor: text;
+}
+
+.note .note-content *,
+.note-content-input * {
+  color: var(--secondary-text) !important;
+}
+
+.note .note-content a,
+.note-content-input a {
+  color: var(--anchor-tag) !important;
+}
+
+.note-title::-webkit-scrollbar,
+.note-content::-webkit-scrollbar,
+.note-title-input::-webkit-scrollbar,
+.note-content-input::-webkit-scrollbar {
+  width: 4px;
+}
+
+.note-title::-webkit-scrollbar-thumb,
+.note-content::-webkit-scrollbar-thumb,
+.note-title-input::-webkit-scrollbar-thumb,
+.note-content-input::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color);
+}
+
+@supports (scrollbar-width: thin) {
+  .note-title,
+  .note-content,
+  .note-title-input,
+  .note-content-input {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-color) var(--card);
+  }
+}
+
+.note-label-container,
+.note-create-label-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.note-label {
+  display: flex;
+  align-items: center;
+  background: var(--label-background);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.note.note--edit .note-label i {
+  display: inline-block;
+}
+
+.note-label i {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.note.note--edit .note-footer {
+  display: none;
+}
+
+.note.note--edit .note-edit--action-btn {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.note.note--edit .url-add-container {
+  display: block;
+}
+
+.url-add-container,
+.create-url-add-container,
+.background-chooser,
+.add-label-container {
+  position: relative;
+}
+
+.url-btn,
+.create-note--action-btn .create-url-btn {
+  color: var(--primary-text);
+  padding: 0 5.5px;
+}
+
+.url-btn i,
+.create-url-btn i {
+  margin-right: 5px;
+}
+
+.url-input-container,
+.create-url-input-container {
+  position: absolute;
+  top: -55px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  transition: 0.3s;
+}
+
+.url-input,
+.create-url-input {
+  background: var(--background);
+  color: var(--primary-text);
+  padding: 3px 10px;
+  border: 2px solid var(--tertiary-text);
+  border-radius: 5px;
+  margin-right: 5px;
+  outline: none;
+}
+
+.url-ok-btn,
+.create-url-ok-btn {
+  background: var(--call-to-action);
+}
+
+.background-choose-btn {
+  color: var(--primary-text);
+  padding: 0 8px;
+}
+
+.background-container {
+  position: absolute;
+  top: -55px;
+  left: -90%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+
+.background-container div {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-label-btn {
+  color: var(--primary-text);
+  padding: 0 8px;
+}
+
+.labels-container {
+  position: absolute;
+  top: -170px;
+  left: -10px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 300px;
+  padding: 14px;
+  background: var(--call-to-action);
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.label,
+.note-create-label {
+  background: var(--label-background);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-btn--note-edit {
+  font-weight: 700;
+  color: var(--primary-text);
+  background: none;
+  padding: 5px 0 5px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-left: auto;
+  outline: none;
+  transition: 0.3s;
+}
+
+.note.note--edit .select-btn {
+  display: none;
+}
+
+/* create btn */
+
+.create-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--call-to-action);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* note create section */
+
+.note-create-container {
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  padding: 20px;
+  background: var(--note-bg);
+  border-radius: 10px;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.4);
+}
+
+.note-title-input {
+  font-weight: 700;
+  font-size: 1.3rem;
+  min-height: 50px;
+  max-height: 80px;
+}
+
+.note-content-input {
+  color: var(--secondary-text);
+  margin-bottom: 10px;
+}
+
+.note-input::before {
+  content: attr(aria-label);
+  position: absolute;
+  color: var(--scrollbar-color);
+}
+
+.create-note--action-btn {
+  display: flex;
+  align-items: center;
+}
+
+.create-note--add-btn,
+.create-note--cancel-btn {
+  margin-inline: auto 0;
+}
+
+.create-note--add-btn {
+  color: var(--black-to-white);
+  background-color: var(--call-to-action);
+}
+
+.create-note--cancel-btn {
+  color: var(--black-to-white);
+  margin-left: 5px;
+  background: transparent;
+}
+
+/* ----------------------- */
+/* attribution */
+/* ----------------------- */
+
+.attribution-container {
+  position: fixed;
+  bottom: 4vh;
+  left: 50%;
+  z-index: 100;
+  transform: translateX(-50%);
+  width: 90%;
+  background: var(--attribution-background);
+  padding: 2rem;
+  border-radius: 10px;
+  transition: 0.3s;
+  z-index: 5;
+  box-shadow: 5px 5px 60px rgba(0, 0, 0, 0.4);
+}
+
+.attribution-container > div:not(:first-child) {
+  margin-top: 20px;
+}
+
+.attribution-container h3 {
+  margin-bottom: 5px;
+}
+
+.attribution-container > * > *:nth-child(2) {
+  margin-left: 20px;
+  font-weight: 600;
+}
+
+.attribution-container a {
+  color: var(--attribution-anchor-tag);
+}

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="https://img.icons8.com/doodle/48/000000/apple-notes.png"
+      type="image/png"
+    />
+
+    <!-- styles -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/queries.css" />
+
+    <!-- scripts -->
+    <script type="module" src="js/app.js" defer></script>
+    <script type="module" src="js/note.js" defer></script>
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+
+    <title>Note It</title>
+  </head>
+  <body data-theme="dark">
+    <section class="profile-chooser translate-50-50">
+      <div class="name">
+        <label for="name">Enter Your Name</label>
+        <input type="text" name="name" id="name" placeholder="First name" />
+      </div>
+
+      <div class="profile-pic">
+        <span>Choose a profile pic</span>
+        <div>
+          <img
+            src="assets/images/profile-pics/profile-pic-1.png"
+            alt="profile-pic-1"
+            class="selected"
+          />
+          <img
+            src="assets/images/profile-pics/profile-pic-2.png"
+            alt="profile-pic-2"
+          />
+          <img
+            src="assets/images/profile-pics/profile-pic-3.png"
+            alt="profile-pic-3"
+          />
+          <img
+            src="assets/images/profile-pics/profile-pic-4.png"
+            alt="profile-pic-4"
+          />
+          <img
+            src="assets/images/profile-pics/profile-pic-5.png"
+            alt="profile-pic-5"
+          />
+          <img
+            src="assets/images/profile-pics/profile-pic-6.png"
+            alt="profile-pic-6"
+          />
+          <img
+            src="assets/images/profile-pics/profile-pic-7.png"
+            alt="profile-pic-7"
+          />
+          <img
+            src="assets/images/profile-pics/profile-pic-8.png"
+            alt="profile-pic-8"
+          />
+          <img
+            src="assets/images/profile-pics/profile-pic-9.png"
+            alt="profile-pic-9"
+          />
+        </div>
+      </div>
+
+      <button class="ok-btn">Ok</button>
+    </section>
+
+    <nav>
+      <div class="sidebar-menu-btn"><i class="fas fa-bars"></i></div>
+
+      <label><a href="index.html">Note It</a></label>
+
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input
+          type="text"
+          name="search-bar"
+          id="search-bar"
+          placeholder="Search notes"
+        />
+      </div>
+
+      <div class="profile">
+        <p>UserName</p>
+        <img
+          src="assets/images/profile-pics/profile-pic-1.png"
+          alt="profile picture"
+          class="profile-pic-nav"
+        />
+      </div>
+
+      <div class="theme-choose">
+        <div class="theme-btn">
+          <i class="fas fa-ellipsis-v"></i>
+        </div>
+
+        <div class="theme screen--hidden">
+          <button data-value="dark" class="btn">Dark</button>
+          <button data-value="light" class="btn">Light</button>
+          <button class="system-theme-btn">System</button>
+        </div>
+      </div>
+    </nav>
+
+    <section class="delete-note-container display--none">
+      <div class="cancel-btn"><i class="fas fa-times"></i></div>
+      <p><span class="selected-items-count">1</span> selected</p>
+      <div class="delete-btn"><i class="fas fa-trash-alt"></i></div>
+    </section>
+
+    <main>
+      <section class="side-bar">
+        <div class="close-btn">
+          <i class="fas fa-times"></i>
+        </div>
+
+        <div>
+          <p class="tag active-filter">
+            <i class="far fa-sticky-note"></i>
+            <span class="all-notes-btn">All Notes</span>
+          </p>
+        </div>
+
+        <div class="sidebar-tags">
+          <p>Tags</p>
+          <ul>
+            <li class="tag">
+              <i class="fas fa-tasks"></i>
+              <span class="filter Tasks">Tasks</span>
+            </li>
+            <li class="tag">
+              <i class="far fa-file-alt"></i>
+              <span class="filter Office-work">Office work</span>
+            </li>
+            <li class="tag">
+              <i class="far fa-address-card"></i>
+              <span class="filter Address">Address</span>
+            </li>
+            <li class="tag">
+              <i class="fas fa-question"></i>
+              <span class="filter Questions">Questions</span>
+            </li>
+            <li class="tag">
+              <i class="fas fa-code"></i> <span class="filter Code">Code</span>
+            </li>
+            <li class="tag">
+              <i class="fas fa-at"></i> <span class="filter URL">URL</span>
+            </li>
+            <li class="tag">
+              <i class="fas fa-user-friends"></i>
+              <span class="filter Person-names">Person names</span>
+            </li>
+            <li class="tag">
+              <i class="far fa-calendar-alt"></i>
+              <span class="filter Dates">Dates</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="notes-area">
+        <h1 id="notes-heading">Notes</h1>
+
+        <div class="notes-container">
+          <p class="empty-note-statement translate-50-50">
+            There are no notes😔. Let's create some🤩.<br /><span
+              >Click the button on the bottom right corner to create notes</span
+            >
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <div class="create-btn"><i class="fas fa-plus"></i></div>
+
+    <section class="note-create-container display--none translate-50-50">
+      <div
+        class="note-input note-title-input"
+        contenteditable="true"
+        role="textbox"
+        aria-label="Title"
+        tabindex="0"
+        spellcheck="true"
+      ></div>
+      <div
+        class="note-input note-content-input"
+        contenteditable="true"
+        role="textbox"
+        aria-label="Take a note"
+        tabindex="0"
+        spellcheck="true"
+      ></div>
+      <div class="note-create-label-container"></div>
+
+      <div class="create-note--action-btn">
+        <div class="create-url-add-container">
+          <button title="Add Url" class="create-url-btn">
+            <i class="fas fa-at"></i>
+          </button>
+          <div class="create-url-input-container screen--hidden">
+            <input
+              type="text"
+              name="url"
+              class="create-url-input"
+              placeholder="Enter Url"
+            />
+            <button class="create-url-ok-btn">Ok</button>
+          </div>
+        </div>
+        <div class="add-label-container">
+          <button title="Add label" class="add-label-btn">
+            <i class="fas fa-tag"></i>
+          </button>
+          <div class="labels-container screen--hidden">
+            <div class="note-create-label">Tasks</div>
+            <div class="note-create-label">Office work</div>
+            <div class="note-create-label">Address</div>
+            <div class="note-create-label">Questions</div>
+            <div class="note-create-label">Code</div>
+            <div class="note-create-label">URL</div>
+            <div class="note-create-label">Person names</div>
+            <div class="note-create-label">Dates</div>
+          </div>
+        </div>
+        <button class="create-note--add-btn">Add</button>
+        <button class="create-note--cancel-btn">Cancel</button>
+      </div>
+    </section>
+
+    <section class="attribution-container">
+      <div class="attribution--favicon">
+        <h3>Favicon :</h3>
+        <a href="https://icons8.com/icon/9ZUExtqRFzfM/notes" target="_blank"
+          >Notes icon by Icons8</a
+        >
+      </div>
+      <div class="attribution--profile-pics">
+        <h3>Profile Pics :</h3>
+        <a
+          target="_blank"
+          href="https://www.freepik.com/free-vector/hand-drawn-flat-profile-icon_17539361.htm#page=1&query=profile&position=16&from_view=keyword"
+          target="_blank"
+          >People vector created by freepik - www.freepik.com</a
+        >
+      </div>
+    </section>
+  </body>
+</html>
