@@ -544,7 +544,9 @@ function getLocalStorage() {
     document.body.setAttribute("data-theme", localStorage.getItem("theme"));
   }
 
-  noteContainer.innerHTML = localStorage.getItem("notes");
+  if (localStorage.getItem("notes") !== null) {
+    noteContainer.innerHTML = localStorage.getItem("notes");
+  }
 
   if (
     localStorage.getItem("userName") != null &&
