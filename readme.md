@@ -1,5 +1,5 @@
 # Notes App
- A [notes app](https://notes-app-developingweb.vercel.app) build from scratch
+ A [notes app](https://note-it-arshwebdev.vercel.app) build from scratch
 
 <br>
 
