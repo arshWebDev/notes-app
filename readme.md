@@ -23,5 +23,4 @@
 - Html
 - CSS
 - FlexBox
-- Vanilla JS
-
+- Vanilla Js
