@@ -136,6 +136,9 @@
 }
 
 @media (min-width: 55em) {
+  #notes-heading {
+    margin-left: 40px;
+  }
   .notes-container {
     padding: 1rem 40px;
   }
