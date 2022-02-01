@@ -7,7 +7,6 @@
 
 <br>
 
-
 ## Features
 
 - Notes App with light and dark theme,
